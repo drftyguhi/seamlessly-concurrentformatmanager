@@ -1,15 +1,13 @@
-function productExceptSelf(nums) {
-  const n = nums.length;
-  const result = new Array(n).fill(1);
-  let product = 1;
-  for (let i = 0; i < n; i++) {
-    result[i] *= product;
-    product *= nums[i];
-  }
-  product = 1;
-  for (let i = n - 1; i >= 0; i--) {
-    result[i] *= product;
-    product *= nums[i];
-  }
+function subsets(nums) {
+  const result = [];
+  backtrack(0, []);
   return result;
+  function backtrack(start, current) {
+    result.push([...current]);
+    for (let i = start; i < nums.length; i++) {
+      current.push(nums[i]);
+      backtrack(i + 1, current);
+      current.pop();
+    }
+  }
 }
